@@ -24,8 +24,6 @@ from transformers import CLIPFeatureExtractor
 SAFETY_MODEL_CACHE = "diffusers-cache"
 SAFETY_MODEL_ID = "CompVis/stable-diffusion-safety-checker"
 
-if not os.path.exists("weights"):
-    raise ValueError("dreambooth weights not found")
 
 DEFAULT_HEIGHT = 512
 DEFAULT_WIDTH = 512
