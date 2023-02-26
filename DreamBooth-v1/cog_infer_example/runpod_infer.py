@@ -141,8 +141,8 @@ def run(job):
         images = []
         for idx, sample in enumerate(job_results):
             images.append({"image": upload.upload_image(job["id"], sample, idx)})
-    job_results["images"] = images
-    return job_results
+    job_output = {"images": images}
+    return job_output
 
 
 runpod.serverless.start({"handler": run})
