@@ -3,12 +3,12 @@ import requests
 import infer
 import os
 import zipfile
+import uuid
 from urllib.parse import urlparse
 from runpod.serverless.utils import download, upload, rp_cleanup
 from boto3 import session
 
 MODEL = infer.Predictor()
-MODEL.setup()
 
 
 def download_weights_from_url(file_url):
@@ -60,6 +60,7 @@ def download_weights_from_s3(s3_config):
         endpoint_url=endpoint_url,
         aws_access_key_id=aws_access_key_id,
         aws_secret_access_key=aws_secret_access_key,
+        region_name=region_name,
     )
 
     os.makedirs("temp", exist_ok=True)
@@ -114,6 +115,7 @@ def run(job):
     elif weights.get("s3Config") is not None:
         download_weights_from_s3(weights["s3Config"])
 
+    MODEL.setup()
     output_s3_config = job_input.get("s3Config")
     samples = job_input["samples"]
     if samples.get("image") is not None:
