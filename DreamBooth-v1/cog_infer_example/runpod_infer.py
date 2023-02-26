@@ -140,7 +140,7 @@ def run(job):
     else:
         images = []
         for idx, sample in enumerate(job_results):
-            images.append({"image": upload.upload_image(job["id"], sample, index)})
+            images.append({"image": upload.upload_image(job["id"], sample, idx)})
     job_output["images"] = images
     return job_output
 
