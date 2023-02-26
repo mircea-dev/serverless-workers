@@ -127,6 +127,7 @@ def run(job):
         width=infer.get("width", 512),
         height=infer.get("height", 512),
         prompt_strength=infer.get("prompt_strength", 0.8),
+        guidance_scale=infer.get("guidance_scale", 7.5),
         num_outputs=infer.get("num_outputs", 1),
         seed=infer.get("seed", 512),
         disable_safety_check=infer.get("disable_safety_check", False),
