@@ -54,7 +54,7 @@ def download_weights_from_s3(s3_config):
     aws_secret_access_key = s3_config.get(
         "accessSecret", os.environ.get("BUCKET_SECRET_ACCESS_KEY", None)
     )
-    region_name = s3_config.get()
+    region_name = s3_config.get("regionName", "weur")
     client = sess.client(
         "s3",
         endpoint_url=endpoint_url,
