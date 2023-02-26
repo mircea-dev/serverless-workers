@@ -130,6 +130,7 @@ def run(job):
         num_outputs=infer.get("num_outputs", 1),
         seed=infer.get("seed", 512),
         disable_safety_check=infer.get("disable_safety_check", False),
+        scheduler="DDIM",
     )
 
     if output_s3_config is not None:
