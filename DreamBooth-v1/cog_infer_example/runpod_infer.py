@@ -117,19 +117,19 @@ def run(job):
 
     MODEL.setup()
     output_s3_config = job_input.get("s3Config")
-    samples = job_input["samples"]
-    if samples.get("image") is not None:
-        samples["image"] = download.download_input_objects([samples["image"]])
+    infer = job_input["infer"]
+    if infer.get("image") is not None:
+        infer["image"] = download.download_input_objects([infer["image"]])
     job_results = MODEL.predict(
-        prompt=samples.get("prompt"),
-        negative_prompt=samples.get("negative_prompt"),
-        image=samples.get("image"),
-        width=samples.get("width", 512),
-        height=samples.get("height", 512),
-        prompt_strength=samples.get("prompt_strength", 0.8),
-        num_outputs=samples.get("num_outputs", 1),
-        seed=samples.get("seed", 512),
-        disable_safety_check=samples.get("disable_safety_check", False),
+        prompt=infer.get("prompt"),
+        negative_prompt=infer.get("negative_prompt"),
+        image=infer.get("image"),
+        width=infer.get("width", 512),
+        height=infer.get("height", 512),
+        prompt_strength=infer.get("prompt_strength", 0.8),
+        num_outputs=infer.get("num_outputs", 1),
+        seed=infer.get("seed", 512),
+        disable_safety_check=infer.get("disable_safety_check", False),
     )
 
     if output_s3_config is not None:
