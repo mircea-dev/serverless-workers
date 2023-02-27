@@ -132,7 +132,15 @@ def run(job):
         num_inference_steps=infer.get("num_inference_steps", 50),
         seed=infer.get("seed", 512),
         disable_safety_check=infer.get("disable_safety_check", False),
-        scheduler="DDIM",
+        # Supported schedulers
+        # "PNDM": PNDMScheduler.from_config(config),
+        # "KLMS": LMSDiscreteScheduler.from_config(config),
+        # "DDIM": DDIMScheduler.from_config(config),
+        # "K_EULER": EulerDiscreteScheduler.from_config(config),
+        # "K_EULER_ANCESTRAL": EulerAncestralDiscreteScheduler.from_config(config),
+        # "DPMSolverMultistep": DPMSolverMultistepScheduler.from_config(config),
+        scheduler=infer.get("scheduler", "DDIM"),
+
     )
 
     if output_s3_config is not None:
