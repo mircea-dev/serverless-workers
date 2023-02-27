@@ -119,7 +119,7 @@ def run(job):
     output_s3_config = job_input.get("s3Config")
     infer = job_input["infer"]
     if infer.get("image") is not None:
-        infer["image"] = download.download_input_objects([infer["image"]])
+        infer["image"] = download.download_input_objects([infer["image"]])[0]
     job_results = MODEL.predict(
         prompt=infer.get("prompt"),
         negative_prompt=infer.get("negative_prompt"),
