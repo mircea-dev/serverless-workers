@@ -1,4 +1,4 @@
-''' Anything v3 | predict.py '''
+''' Anything v4 | predict.py '''
 
 import os
 from typing import List
@@ -39,7 +39,7 @@ MODEL_CACHE = "diffusers-cache"
 
 
 class Predictor(BasePredictor):
-    '''Predictor class for Anything v3'''
+    '''Predictor class for Anything v4'''
 
     def setup(self):
         '''
@@ -48,7 +48,7 @@ class Predictor(BasePredictor):
         print("Loading pipeline...")
 
         self.txt2img_pipe = StableDiffusionPipeline.from_pretrained(
-            "Linaqruf/anything-v3.0",
+            "andite/anything-v4.0",
             safety_checker=None,
             cache_dir=MODEL_CACHE,
             local_files_only=True,
